@@ -12,7 +12,7 @@ import javax.persistence.Table;
 import lombok.Data;
 
 @Entity
-@Table(name="schedulerlog")
+@Table(name="scheduler_log")
 @Data
 public class SchedulerLog implements Serializable{
 	
@@ -25,5 +25,6 @@ public class SchedulerLog implements Serializable{
 	private int id;
     private Instant starttime;
     private Instant endtime;
+    private Instant intervallog;
     
 }

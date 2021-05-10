@@ -36,9 +36,12 @@ public class TaskAllocationService {
 	private Instant startTime = null;
 	private Instant endTime = null;
 	private Instant interval = null;
-
 	private String status = "NEW";
 
+	/**
+	 * Allocate tasks to teamMembers 
+	 * (Dummy Implementation for Coding Test Purpose)
+	 */
 	@Scheduled(fixedDelayString = "${delay}")
 	private void allocateTask() {
 		startTime = Instant.now();
@@ -52,6 +55,13 @@ public class TaskAllocationService {
 			if (!userStory.isAllocated()) {
 				for (TeamMember teamMember : teamMembers) {
 					if (teamMember.getDesignation().equalsIgnoreCase("Developer")
+							&& Objects.isNull(userStory.getTeamMember())&& !teamMember.getIsNotFree()) {
+						userStory.setTeamMember(teamMember);
+						userStory.setAllocated(Boolean.TRUE);
+						teamMember.setIsNotFree(Boolean.TRUE);
+						break;
+					}
+					if (teamMember.getDesignation().equalsIgnoreCase("Lead")
 							&& Objects.isNull(userStory.getTeamMember())&& !teamMember.getIsNotFree()) {
 						userStory.setTeamMember(teamMember);
 						userStory.setAllocated(Boolean.TRUE);

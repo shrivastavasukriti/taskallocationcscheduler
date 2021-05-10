@@ -25,6 +25,9 @@ public class LoadInitData {
 	@Autowired
 	private UserStoriesRepository userStoriesRepository;
 	
+	/**
+	 * Load Initial TeamMember Mapping Data to H2
+	 */
 	@EventListener(ApplicationReadyEvent.class)
 	public void loadInitTeamMemberDataToH2() {
 		log.info("loadInitDataToH2 invoked !!");
@@ -52,7 +55,10 @@ public class LoadInitData {
 		teamMemberRepository.saveAll(listTeamMember);
 		log.info("TeamMembers loaded to H2 !!");
 	}
-		
+
+	/**
+	 * Load Initial UserStories Mapping Data to H2
+	 */
 	@EventListener(ApplicationReadyEvent.class)
 	public void loadInitUserStoriesDataToH2() {
 		log.info("loadInitUserStoriesDataToH2 invoked !!");
